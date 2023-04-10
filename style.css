@@ -1,0 +1,607 @@
+* {
+  margin: 0;
+  font-family: "Space Mono", monospace;
+  scroll-behavior: smooth;
+}
+a {
+  text-decoration: none;
+}
+.container {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.cta {
+  display: inline-block;
+  padding: 10px 30px;
+  color: white;
+  background-color: transparent;
+  border: 2px solid rgb(0, 222, 0);
+  font-size: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  margin-top: 30px;
+  transition: 0.3s ease;
+  transition-property: background-color, color;
+}
+.cta:hover {
+  color: white;
+  background-color: rgb(0, 222, 0);
+  border: 2px solid white;
+}
+.cta1 {
+  display: inline-block;
+  padding: 10px 30px;
+  color: black;
+  background-color: transparent;
+  border: 2px solid rgb(0, 222, 0);
+  font-size: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  margin-top: 30px;
+  transition: 0.3s ease;
+  transition-property: background-color, color;
+}
+.cta1:hover {
+  color: white;
+  background-color: rgb(0, 222, 0);
+  border: 2px solid black;
+}
+.cta2 {
+  display: inline-block;
+  padding: 10px 30px;
+  color: black;
+  background-color: white;
+  border: 2px solid rgb(0, 222, 0);
+  font-size: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  margin-top: 30px;
+  transition: 0.3s ease;
+  transition-property: background-color, color;
+}
+.cta2:hover {
+  color: rgb(0, 222, 0);
+  background-color: black;
+  border: 2px solid rgb(0, 222, 0);
+}
+.brand h1 {
+  font-size: 3rem;
+  text-transform: uppercase;
+  color: white;
+}
+span {
+  color: rgb(0, 222, 0);
+}
+
+/* Header section */
+#header {
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: auto;
+}
+#header .header {
+  min-height: 8vh;
+  transition: 0.3s ease background-color;
+}
+#header .nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100vw;
+  height: 100%;
+  max-width: 90%;
+  padding: 0 10px;
+}
+#header .nav-list ul {
+  list-style: none;
+  position: absolute;
+  background-color: black;
+  width: 100%;
+  height: 100vh;
+  left: 100%;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  overflow-x: hidden;
+  transition: 0.5s ease left;
+}
+#header .nav-list ul.active {
+  left: 0%;
+}
+#header .nav-list ul a {
+  font-size: 2.5rem;
+  font-weight: 500;
+  letter-spacing: 0.2rem;
+  text-decoration: none;
+  color: white;
+  text-transform: uppercase;
+  padding: 20px;
+  display: block;
+}
+#header .nav-list ul a::after {
+  content: attr(data-after);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  color: rgb(0, 222, 0);
+  font-size: 15rem;
+  letter-spacing: 50px;
+  z-index: -1;
+  transition: 0.3s ease letter-spacing;
+}
+#header .nav-list ul li:hover a::after {
+  transform: translate(-50%, -50%) scale(1);
+  letter-spacing: initial;
+}
+#header .nav-list ul li:hover a {
+  color: rgb(0, 222, 0);
+}
+#header .hamburger {
+  height: 60px;
+  width: 60px;
+  display: inline-block;
+  border: 3px solid white;
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  cursor: pointer;
+  transform: scale(0.8);
+  margin-right: 20px;
+}
+#header .hamburger:after {
+  position: absolute;
+  content: "";
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  border: 3px solid white;
+  animation: hamburger_puls 1s ease infinite;
+}
+#header .hamburger .bar {
+  height: 2px;
+  width: 30px;
+  position: relative;
+  background-color: rgb(0, 222, 0);
+  z-index: -1;
+}
+#header .hamburger .bar::after,
+#header .hamburger .bar::before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  background-color: white;
+  transition: 0.3s ease;
+  transition-property: top, bottom;
+}
+#header .hamburger .bar::after {
+  top: 8px;
+}
+#header .hamburger .bar::before {
+  bottom: 8px;
+}
+#header .hamburger.active .bar::before {
+  bottom: 0;
+}
+#header .hamburger.active .bar::after {
+  top: 0;
+}
+
+#hero {
+  background-image: url(./img/hero1.jpg);
+  background-size: cover;
+  background-position: top center;
+  position: relative;
+  z-index: 1;
+}
+#hero::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  opacity: 0.7;
+  z-index: -1;
+}
+#hero .hero {
+  max-width: 90%;
+  margin: 0 auto;
+  justify-content: flex-start;
+}
+#hero .typewriter-text {
+  display: inline-block;
+  font-size: 35px;
+  line-height: 60px;
+  letter-spacing: 1px;
+  border-right: 5px solid;
+  color: rgb(0, 222, 0);
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: typing 3s steps(36), cursor 0.4s step-end infinite alternate;
+}
+@keyframes cursor {
+  50% {
+    border-color: transparent;
+  }
+}
+@keyframes typing {
+  from {
+    width: 0;
+  }
+}
+#hero .typewriter-text1 {
+  display: inline-block;
+  font-size: 35px;
+  line-height: 60px;
+  letter-spacing: 1px;
+  border-right: 5px solid;
+  color: rgb(0, 222, 0);
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: typing 2s steps(36), cursor 0.4s step-end infinite alternate;
+}
+@keyframes cursor {
+  50% {
+    border-color: transparent;
+  }
+}
+@keyframes typing {
+  from {
+    width: 0;
+  }
+}
+/* End Hero Section */
+
+/* About Section */
+#about .about {
+  flex-direction: row;
+  text-align: center;
+  max-width: 80%;
+  margin: 0 auto;
+  padding: 0px 20px;
+  height: 100vh;
+}
+#about .about h1 {
+  font-family: "Orbitron", sans-serif;
+  font-size: 35px;
+  padding-top: 80px;
+  padding-bottom: 40px;
+}
+#about .col-left {
+  width: 300px;
+  height: 360px;
+}
+#about .col-right {
+  flex: 2;
+  padding: 0px 100px;
+}
+#about .col-right h2 {
+  font-size: 1.8rem;
+  font-weight: 500;
+  letter-spacing: 0.2rem;
+  margin-bottom: 10px;
+}
+.section-title {
+  font-size: 40px;
+  color: black;
+  text-shadow: -4px 3px 0px rgb(0, 222, 0);
+  text-align: center;
+  padding-top: 50px;
+}
+#about .col-right p {
+  padding-top: 80px;
+  margin-bottom: 20px;
+  text-align: center;
+  text-align: justify;
+  text-justify: inter-word;
+}
+#about .col-right .cta {
+  color: black;
+  margin-bottom: 50px;
+  padding: 10px 20px;
+  font-size: 2rem;
+}
+#about .col-left .about-img {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  border: 10px solid white;
+}
+#about .col-left .about-img::after {
+  content: "";
+  position: absolute;
+  left: -33px;
+  top: 19px;
+  height: 98%;
+  width: 98%;
+  border: 7px solid rgb(0, 222, 0);
+  z-index: -1;
+}
+.about-container {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* End About Section */
+
+/* Projects section */
+
+#projects .projects {
+  height: 100vh;
+  text-align: center;
+}
+#projects .projects-container {
+  width: 80%;
+  margin: auto;
+}
+#projects .projects-container h1 {
+  font-family: "Orbitron", sans-serif;
+  font-size: 35px;
+  padding-top: 80px;
+  padding-bottom: 40px;
+}
+#projects .all-projects {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 80px;
+}
+#projects .projects-row1 {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+#projects .projects-row2 {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+#projects .flip-card {
+  background-color: transparent;
+  padding: 20px 20px;
+  width: 100%;
+  height: 300px;
+  perspective: 1000px;
+}
+.flip-card-front {
+  background-size: cover;
+  background-position: center;
+}
+
+/* This container is needed to position the front and back side */
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 2);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 2);
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.15);
+}
+
+/* Style the front side (fallback if image is missing) */
+.flip-card-front {
+  background-color: #000;
+  color: black;
+}
+.card1 {
+  background-image: url(./img/2048_game.png);
+}
+.card2 {
+  background-image: url(./img/TicTacToe.png);
+}
+.card3 {
+  background-image: url(./img/mrrob.jpeg);
+}
+.card4 {
+  background-image: url(./img/Amdev-proj.JPG);
+  background-position: top;
+}
+
+/* Style the back side */
+.flip-card-back {
+  background-color: black;
+  transform: rotateY(180deg);
+}
+.flip-card-back p {
+  color: white;
+}
+.flip-card-back h1 {
+  color: rgb(0, 222, 2);
+}
+
+/* Education Section*/
+#education .education {
+  width: 100%;
+  background-color: black;
+}
+#education .education h1 {
+  font-family: "Orbitron", sans-serif;
+  font-size: 35px;
+  padding-top: 70px;
+  color: white;
+  text-align: center;
+}
+.education-container {
+  width: 90%;
+  margin: auto;
+}
+.education-column {
+  display: flex;
+  justify-content: space-between;
+}
+.education-row {
+  height: 360px;
+  background-size: cover;
+  background-position: top;
+  align-items: center;
+  padding: 0 50px;
+  transition: 0.5s all ease;
+}
+.education-row1 {
+  background-image: url(./img/prva-osnovna.jpg);
+
+  -webkit-box-shadow: -10px 10px 5px 0px rgba(255, 255, 255, 0.75);
+  -moz-box-shadow: -10px 10px 5px 0px rgba(255, 255, 255, 0.75);
+  box-shadow: -10px 10px 5px 0px rgba(255, 255, 255, 0.45);
+  width: 100px;
+  height: 180px;
+  border-radius: 50%;
+}
+.education-row1:hover {
+  transform: translate(0px, -20px);
+  box-shadow: -10px 10px 5px 0px rgba(0, 222, 0);
+}
+.education-row2 {
+  background-image: url(./img/cetvrta-gimnazija.jpg);
+  -webkit-box-shadow: -10px 10px 5px 0px rgba(255, 255, 255, 0.75);
+  -moz-box-shadow: -10px 10px 5px 0px rgba(255, 255, 255, 0.75);
+  box-shadow: -10px 10px 5px 0px rgba(255, 255, 255, 0.45);
+  width: 100px;
+  height: 180px;
+  border-radius: 50%;
+}
+.education-row2:hover {
+  transform: translate(0px, -10px);
+  box-shadow: -10px 10px 5px 0px rgba(0, 222, 0);
+}
+.education-row3 {
+  background-image: url(./img/ius.png);
+  -webkit-box-shadow: -10px 10px 5px 0px rgba(255, 255, 255, 0.75);
+  -moz-box-shadow: -10px 10px 5px 0px rgba(255, 255, 255, 0.75);
+  box-shadow: -10px 10px 5px 0px rgba(255, 255, 255, 0.45);
+  width: 100px;
+  height: 180px;
+  border-radius: 50%;
+}
+.education-row3:hover {
+  transform: translate(0px, -10px);
+  box-shadow: -10px 10px 5px 0px rgba(0, 222, 0);
+}
+.education-row p {
+  color: white;
+  padding-bottom: 5px;
+  text-align: center;
+  padding: 0px 50px;
+}
+.ed-row {
+  color: white;
+  text-align: center;
+}
+.ed-row h2 {
+  padding-top: 10px;
+}
+.education-column2 h2 {
+  font-family: "Orbitron", sans-serif;
+  font-size: 35px;
+  padding-top: 30px;
+  color: white;
+  text-align: center;
+}
+
+.slideshow-container {
+  max-width: 800px;
+  position: relative;
+  margin: auto;
+}
+.mySlides {
+  display: none;
+}
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  background-color: gray;
+}
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+.prev:hover,
+.next:hover {
+  background-color: rgb(0, 222, 0);
+}
+
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: white;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active,
+.dot:hover {
+  background-color: rgb(0, 222, 0);
+}
+
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
